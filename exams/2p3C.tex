@@ -1,0 +1,63 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[slovak]{babel}
+
+\usepackage{amsmath, amsthm, amssymb}
+
+\addtolength{\voffset}{-3cm}
+\addtolength{\hoffset}{-1.3cm}
+\addtolength{\textwidth}{2.6 cm}
+\addtolength{\textheight}{5cm}
+
+\parskip = 2mm
+% \parindent = 0pt
+
+\def\R{\mathbb R}
+\def\Z{\mathbb Z}
+
+\title{Kombinatorická analýza, 2. časť}
+\date{}
+\pagestyle{empty}
+\begin{document}
+
+\centerline{Kombinatorická analýza, 2. písomka, opravný termín C}
+
+\begin{enumerate}
+\item
+Nájdite obyčajnú generujúcu funkciu pre postupnosť $(a_n)$, ktorá spĺňa $a_0=0$ a
+$$
+a_n = 3a_{n-1} + {n\choose 2}\quad\hbox{pre každé $n\ge 1$}.
+$$
+
+\item
+Nájdite explicitné vyjadrenie pre $a_n$, ak $a_0=a_1=0$ a
+$$
+a_n = 2a_{n-1}-a_{n-2}-1\quad\hbox{pre každé $n\ge 1$}.
+$$
+
+\item
+Nájdite uzavretý tvar pre
+$$
+\sum_{k\ge 0} {k\over 3^k}.
+$$
+
+\item
+Odhadnite s relatívnou chybou $O(n^{-1})$ hodnotu
+$$
+H_n^{H_n}.
+$$
+
+\item
+Odhadnite s relatívnou chybou $O(n^{-2})$ hodnotu
+$$
+{4n\choose n}.
+$$
+
+
+\end{enumerate}
+
+
+\end{document}
+

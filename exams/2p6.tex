@@ -1,0 +1,65 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[slovak]{babel}
+
+\usepackage{amsmath, amsthm, amssymb}
+
+\addtolength{\voffset}{-3cm}
+\addtolength{\hoffset}{-1.3cm}
+\addtolength{\textwidth}{2.6 cm}
+\addtolength{\textheight}{5cm}
+
+\parskip = 2mm
+% \parindent = 0pt
+
+\def\R{\mathbb R}
+\def\Z{\mathbb Z}
+
+\def\ogf{\overset{{\rm ogf}}{\longleftrightarrow}}
+
+\title{Kombinatorická analýza, 2. časť}
+\date{}
+\pagestyle{empty}
+\begin{document}
+
+\begin{enumerate}
+\item
+Uvažujme postupnosť $(a_n)_{n=0}^\infty$ s ogf $A(x)$.
+Nájdite ogf pre postupnosť $a_1, a_4, a_7, a_{10}, \dots$.
+
+\bigskip\hrule
+
+\item
+Pre postupnosť $(y_n)$ platí
+$$y_0 = 1\qquad\hbox{a}\qquad y_{n+1} = 2y_n + b^n\quad \hbox{pre každé $n\ge 0$}$$
+ ($b$ je reálna konštanta).
+Nájdite obyčajnú generujúcu funkciu (v uzavretom tvare) prislúchajúcu tejto postupnosti a určte všetky $b$, pre ktoré existuje kladné reálne číslo $c$ tak, že $y_n = \Theta(c^n)$.
+
+\bigskip\hrule
+
+\item
+Pre každé kladné celé číslo $m$ nájdite uzavretý tvar sumy
+$$
+\sum_{k=0}^n 3^k{n\choose k}{k\choose m}.
+$$
+
+\bigskip\hrule
+
+\item
+Pre konštantné kladné celé číslo $k$ odhadnite $n^{\underline{k}}/n^k$ s absolútnou chybou $o(n^{-2})$.
+
+\bigskip\hrule
+
+\item
+Odhadnite s absolútnou chybou $O(n^{-4})$ hodnotu
+$$
+\sum_{k=0}^{2n} {1\over n^3+2k+1}.
+$$
+
+\end{enumerate}
+
+
+\end{document}
+

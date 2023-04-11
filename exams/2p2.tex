@@ -1,0 +1,69 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[slovak]{babel}
+
+\usepackage{amsmath, amsthm, amssymb}
+
+\addtolength{\voffset}{-3cm}
+\addtolength{\hoffset}{-1.3cm}
+\addtolength{\textwidth}{2.6 cm}
+\addtolength{\textheight}{5cm}
+
+\parskip = 2mm
+% \parindent = 0pt
+
+\def\R{\mathbb R}
+\def\Z{\mathbb Z}
+
+\title{Kombinatorická analýza, 2. časť}
+\date{}
+\pagestyle{empty}
+\begin{document}
+
+\centerline{Kombinatorická analýza, 2. písomka, opravný termín A}
+
+\begin{enumerate}
+\item
+Nájdite explicitné vyjadrenie $a_n$, ak $a_0=a_{10}=0$ a
+$$
+a_n = 2a_{n-1}-a_{n-2}-1\quad\hbox{pre každé $n\ge 1$}.
+$$
+
+\item
+Nájdite explicitné vyjadrenie $b_n$, ak $b_0=1$ a
+$$
+b_{n+1} = \sum_{k=0}^n (n-k)b_k\quad\hbox{pre každé $n\ge 0$}.
+$$
+% R14
+
+%Nájdite explicitné vyjadrenie $b_n$, ak $b_0=0$ a
+%$$
+%b_{n+1} = 1 + \sum_{k=0}^n 2^{k-n}b_k\quad\hbox{pre každé $n\ge 0$}.
+%$$
+
+\item
+Nájdite uzavretý tvar pre
+$$
+\sum_k (-1)^k{m\choose k}{m\choose n-k}.
+$$
+
+\item
+Odhadnite s relatívnou chybou $O(n^{-2})$ hodnotu
+$$
+\left({n+1\over n+2}\right)^{n+3}.
+$$
+
+\item
+Odhadnite s absolútnou chybou $O(n^{-3})$ hodnotu
+$$
+\sum_{k=0}^n {1\over n^2+2k+1}.
+$$
+% A4
+
+\end{enumerate}
+
+
+\end{document}
+

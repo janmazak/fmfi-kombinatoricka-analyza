@@ -1,0 +1,72 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[slovak]{babel}
+
+\usepackage{amsmath, amsthm, amssymb}
+
+\addtolength{\voffset}{-3cm}
+\addtolength{\hoffset}{-1.3cm}
+\addtolength{\textwidth}{2.6 cm}
+\addtolength{\textheight}{5cm}
+
+\parskip = 2mm
+% \parindent = 0pt
+
+\def\R{\mathbb R}
+\def\Z{\mathbb Z}
+
+\def\ogf{\overset{{\rm ogf}}{\longleftrightarrow}}
+
+\title{Kombinatorická analýza, 2. časť}
+\date{}
+\pagestyle{empty}
+\begin{document}
+
+\begin{enumerate}
+\item
+Nech $a_0=0$, $a_1=-2$ a
+$$
+a_{n+2} -4 a_{n+1}+3a_n = 3\cdot 2^{n+2} \quad\hbox{pre každé $n\ge 0$}.
+$$
+Dokážte, že $(a_n)\ogf {16x^2-2x\over (1-x)(1-2x)(1-3x)}$ a nájdite explicitné vyjadrenie $a_n$.
+\medskip\hrule
+
+\item
+O postupnosti $(b_n)_{n\ge 0}$ je známe, že $b_0=1$ a
+$$
+b_n = 1 + \sum_{k=1}^n (n-k)b_k\quad\hbox{pre každé $n\ge 1$}.
+$$
+Dokážte, že pre $n>0$ platí $b_n = F_{2n-1}$.
+% R20
+\medskip\hrule
+
+\item
+Odhadnite s absolútnou presnosťou $O(n^{-3})$ hodnotu
+$$
+\sum_{k\ge 0} ke^{-k/n^2}.
+$$
+\medskip\hrule
+
+\item
+Odhadnite s absolútnou presnosťou $O(1)$ hodnotu
+$$
+\sum_{k=1}^{2n} (-1)^kH_k.
+$$
+% vysledok je O(1) + ln {2\cdot 4\cdot \dots \cdot 2n\over 1\cdot 3\cdot \dots \cdot (2n-1)} = O(1) + ln {(2^n\cdot n!)^2\over (2n)!} = O(1) + {1\over 2}\ln n
+\medskip\hrule
+
+\item
+Rozhodnite, či existuje kladná konštanta $c$ taká, že
+$$
+S_n = \sum_{k=0}^{\lfloor n/3\rfloor} {n-2k\choose k}\left({-4\over 27}\right)^k = \Theta(c^n).
+$$
+Ak existuje, nájdite ju. Ak neexistuje, nájdite čo najmenšiu konštantu $d$ takú, že $S_n = O(d^n)$.
+
+
+\end{enumerate}
+
+
+\end{document}
+

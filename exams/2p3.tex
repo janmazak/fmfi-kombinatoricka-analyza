@@ -1,0 +1,64 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[slovak]{babel}
+
+\usepackage{amsmath, amsthm, amssymb}
+
+\addtolength{\voffset}{-3cm}
+\addtolength{\hoffset}{-1.3cm}
+\addtolength{\textwidth}{2.6 cm}
+\addtolength{\textheight}{5cm}
+
+\parskip = 2mm
+% \parindent = 0pt
+
+\def\R{\mathbb R}
+\def\Z{\mathbb Z}
+
+\title{Kombinatorická analýza, 2. časť}
+\date{}
+\pagestyle{empty}
+\begin{document}
+
+\centerline{Kombinatorická analýza, 2. písomka, opravný termín A}
+
+\begin{enumerate}
+\item
+Nájdite obyčajnú generujúcu funkciu pre postupnosť $(a_n)$, ktorá spĺňa $a_0=1$ a
+$$
+a_n = 3a_{n-1} + {n\choose 2}\quad\hbox{pre každé $n\ge 1$}.
+$$
+
+\item
+Nájdite explicitné vyjadrenie $b_n$, ak $b_0=0$ a
+$$
+b_{n+1} = 1 + \sum_{k=0}^n 2^{k-n}b_k\quad\hbox{pre každé $n\ge 0$}.
+$$
+
+\item
+Dokážte, že pre nezáporné celé čísla $m$ a $n$ platí
+$$
+\sum_k {2n+1\choose k}{m+k\choose 2n}={2m+1\choose 2n}.
+$$
+% http://imomath.com/index.php?options=357
+
+\item
+Odhadnite s relatívnou chybou $O(n^{-2})$ hodnotu
+$$
+(n+1)^{H_n}.
+$$
+
+\item
+Odhadnite s absolútnou chybou $O(n^{-4})$ hodnotu
+$$
+\sum_{k=0}^{2n} {1\over n^3+k-1}.
+$$
+
+
+\end{enumerate}
+
+
+\end{document}
+

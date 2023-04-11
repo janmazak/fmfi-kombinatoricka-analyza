@@ -281,42 +281,48 @@ Given $f(x)\ogf (a_n)_{n\ge 0}$, express ogf for the following sequences in term
 
 \begin{enumerate}
     \item Using Rule 5, prove that $F_0+F_1+\dots+F_n=F_{n+2}-1$ for $n\ge 0$ [Wilf 38, example 6].\\
-    	\ans{Compare gfs of both sides, left is $f/(1-x)$, where $f = x/(1-x-x^2)$, i.e. Fibonacci.}
-	\item Solve $g_n=g_{n-1}+g_{n-2}$ for $n\ge 2$, $g_0 = 0$, $g_{10} = 10$.\\
-		\ans{$g_n = {g_{10}\over F_{10}}F_n$, try the ``boundary method'' described above, computer necessary}
+        \ans{Compare gfs of both sides, left is $f/(1-x)$, where $f = x/(1-x-x^2)$, i.e. Fibonacci.}
+    \item Solve $g_n=g_{n-1}+g_{n-2}$ for $n\ge 2$, $g_0 = 0$, $g_{10} = 10$.\\
+        \ans{$g_n = {g_{10}\over F_{10}}F_n$, try the ``boundary method'' described above, computer necessary}
     \item Solve $a_n = \sum_{k=0}^{n-1}a_k$ for $n > 0$; $a_0 = 1$. [R16]\\
-    	\ans{$a_n = 2^{n-1}$ for $n \ge 1$}
+        \ans{$a_n = 2^{n-1}$ for $n \ge 1$}
     \item Solve $f_n=2f_{n-1}+f_{n-2}+f_{n-3}+\dots+f_1+1$ for $n\ge 1$, $f_0 = 0$ [Knuth 349/(7.41)]\\
-    	\ans{$F(x) = x/(1-3x+x^2)$; $f_n=F_{2n}$}
+        \ans{$F(x) = x/(1-3x+x^2)$; $f_n=F_{2n}$}
     \item Solve $g_n = g_{n-1} + 2g_{n-2}+\dots +ng_0$ for $n> 0$, $g_0 = 1$. [K7.7]\\
-    	\ans{$G(x)=1+x/(1-3x+x^2)$; $g_n=F_{2n} + [n=0]$}
+        \ans{$G(x)=1+x/(1-3x+x^2)$; $g_n=F_{2n} + [n=0]$}
     \item Solve $g_n = \sum_{k=1}^{n-1} {g_k + g_{n-k} + k\over 2}$ for $n\ge 2$, $g_1 = 1$.
     \item Solve $g_n=g_{n-1}+2g_{n-2}+(-1)^n$ for $n\ge 2$, $g_0 = g_1 = 1$. [Knuth 341, example 2]\\
-    	\ans{$G(x) = {1+x+x^2\over (1-2x)(1+x)^2}$; $g_n = {7\over 9}2^n + {1\over 9}(3n+2)(-1)^n$}
+        \ans{$G(x) = {1+x+x^2\over (1-2x)(1+x)^2}$; $g_n = {7\over 9}2^n + {1\over 9}(3n+2)(-1)^n$}
     \item Solve $a_{n+2}=3a_{n+1}-2a_n+n+1$ for $n\ge 0$; $a_0 = a_1 = 1$. [R24]\\
-    	\ans{$A(z) = {2\over 1-2z}-{1\over (1-z)^3}$; $a_n = 2^{n+1}-{n+2\choose 2}$}
+        \ans{$A(z) = {2\over 1-2z}-{1\over (1-z)^3}$; $a_n = 2^{n+1}-{n+2\choose 2}$}
     \item Prove that $\displaystyle \ln {1\over 1-x} = \sum_{n\ge 1} {1\over n} x^n$. \ans{consider $\int {1\over 1-x}$}
 \end{enumerate}
 
 
 
-\section{prednaska}
-% 4. prednaska
+\section{Skipping sequence elements, Snake oil}
+% 3. prednaska
 
 
-\begin{itemize}
-\item
-Discovering combinatorial identities via gfs [Knuth 198, Vandermonde and 5.55]
+\ruleline{Discovering combinatorial identities via gfs [Knuth 198, Vandermonde and 5.55]}
 \begin{itemize}
     \item $(1+x)^r = \sum_{k\ge 0} {r\choose k}x^k$; consider $(1+x)^r(1+x)^s = (1+x)^{r+s}$
     \item comparison of coefficients yields $\sum_{k\ge 0}^n {r\choose k}{s\choose n-k}={r+s\choose n}$ --- Vandermonde
     \item by considering $(1-x)^r(1+x)^r = (1-x^2)^r$, we obtain $$\sum_{k=0}^n {r\choose k}{r\choose n-k}(-1)^k = (-1)^{n/2}{r\choose n/2}[2\mid n]$$
 \end{itemize}
 
-TODO tahak oficialny, pridat nan tabulky z knutha
+\ruleline{Every third binomial coefficient [Wilf 51, example 4]}
+\begin{itemize}
+    \item why $(f(x)+f(-x))/2\ogf a_0, 0, a_2, 0, a_4, \dots$ works: ${1\over 2}(1^n + (-1)^n) = [2\mid n]$
+    \item in general, ${1\over r}\sum_{j=0}^{r-1} \omega_r^n = {1\over r}\sum_{j=0}^{r-1} e^{2\pi ijn/r} = [r\mid n]$\\
+        --- just a geometric progression, or a consequence of $t^r-1=(t-1)(t^{n-1}+\dots+t+1)$
+    \item problem: find $S_n = \sum_k (-1)^k{n\choose 3k}$
+    \item if we knew $f(x) = \sum_k {n\choose 3k}x^{3k}$, we would have $\lambda_n = f(-1)$
+    \item for $F(x) = (1+x)^n$, we have $f(x) = {1\over 3}\big(F(x) + F(x\omega^1) + F(x\omega^2)\big)$ for $\omega=e^{2\pi i/3}$
+    \item and so $S_n=f(-1) ={1\over 3}[(1-\omega)^n + (1-\omega^2)^n)] = $ $$ = {1\over 3}\left[\left({3-\sqrt3 i\over 2}\right)^n+\left({3+\sqrt3 i\over 2}\right)^n\right] = 2\cdot 3^{n/2-1}\cos(\pi n/6)$$
+\end{itemize}
 
-\item
-Catalan numbers [Knuth 357, example 4]
+\ruleline{Catalan numbers [Knuth 357, example 4]}
 \begin{itemize}
     \item consider the number of possibilities $c_n$ of how to specify the multiplication order of $A_0A_1\dots A_n$ by parentheses
     \item split it by the place of last multiplication; $c_n = \sum\limits_{k=0}^{n-1} c_kc_{n-1-k}$ for $n > 0$; $c_0=1$
@@ -335,29 +341,32 @@ Catalan numbers [Knuth 357, example 4]
     \item therefore, $$C(x)={1\over 2x}\sum_{k\ge 1}{2\over k}{2k-2\choose k-1}x^k = \sum_{n\ge 0}{1\over n+1}{2n\choose n}x^n$$
 \end{itemize}
 
-\item
-Every third binomial coefficient [Wilf 51, example 4]
-\begin{itemize}
-    \item why $(f(x)+f(-x))/2\ogf a_0, 0, a_2, 0, a_4, \dots$ works: ${1\over 2}(1^n + (-1)^n) = [2\mid n]$
-    \item in general, $\sum_{j=0}^{r-1} \omega_r^n = \sum_{j=0}^{r-1} e^{2\pi ijn/r} = r\cdot [r\mid n]$ (just a geometric progression)
-    \item problem: find $\lambda_n = \sum_k (-1)^k{n\choose 3k}$
-    \item if we knew $f(x) = \sum_k {n\choose 3k}x^{3k}$, we would have $\lambda_n = f(-1)$
-    \item for $F(x) = (1+x)^n$, we have $f(x) = (F(x) + F(x\omega^1) + F(x\omega^2))/3$
-    \item and so $\lambda_n=f(-1) ={1\over 3}[(1-\omega)^n + (1-\omega^2)^n)] = $ $$ = {1\over 3}\left[\left({3-\sqrt3 i\over 2}\right)^n+\left({3+\sqrt3 i\over 2}\right)^n\right] = 2\cdot 3^{n/2-1}\cos(\pi n/6)$$ 
-\end{itemize}
-
-\item
-Exercises
+\ruleline{Exercises}
 \begin{enumerate}
+    \item Assume that $A(x)\ogf (a_n)$. Express the generating function for $\sum_{n\ge 0} a_{3n}x^n$ in terms of $A(x)$.\\
+            \ans{${1\over 3}(A(x^{1/3}) + A(\omega x^{1/3})) + A(\omega^2 x^{1/3})$, where $\omega=e^{2\pi i/3}$}
+    \item Compute $S_n=\sum_{n\ge 0} F_{3n}/10^n$ (by plugging a suitable value into the generating function for $F_{3n}$).\\
+            \ans{The gf is ${2x\over 1-4x-x^2}$ and $S_n=20/59$.}
+    \item Compute $\sum_k {n\choose 4k}$.
+            % https://math.stackexchange.com/questions/142260/sum-of-every-kth-binomial-coefficient
+            % https://www.wolframalpha.com/input?i=sum+over+k+of+binom%28n%2C+4k%29
+            \ans{$2^{n/2 - 2} (2^{n/2} + \cos(n \pi/4) + (-1)^n \cos(3 n \pi/4)$}
+    \item Compute $\sum_k {6m\choose 3k+1}$.
+            % https://math.stackexchange.com/questions/142260/sum-of-every-kth-binomial-coefficient
+            % https://www.wolframalpha.com/input?i=sum+over+k+of+binom%28100%2C+3k%2B1%29
+            \ans{Compute the sum for general $n$ and then plug in $n=6m$; $(2^{6m}-1)/3$}
+    \item Evaluate $S_n = \sum_{k=0}^n (-1)^k k^2$.
+            \ans{$f(x) = {-x\over (1+x)^3}$; $S_n={1\over 2}(-1)^n n(n+1)$}
     \item Find ogf for $H_n = 1 + 1/2 + 1/3 + \dots$. \ans{$-\ln(1-x) / (1-x)$}
-    \item Evaluate $S_n = \sum_{k=0}^n (-1)^kk$. [GF11]
-            \ans{$f(x) = {-x\over (1+x)^2(1-x)}={1/2\over (1+x)^2} - {1/4\over 1+x} - {1/4\over 1-x}$; $S_n={1\over 4}(2(n+1)(-1)^n-(-1)^n-1)$}
-    \item samplesort Knuth 354 ex. 2: convolution...
-    \item nejake ulohy zo zbierky: R23, R21?, R19?
+    \item Find the number of ways of cutting a convex $n$-gon with labelled vertices into triangles.\\
+            % https://math.mit.edu/~goemans/18310S15/generating-function-notes.pdf
+            \ans{$C_{n-2}$ (shifted Catalan numbers)}
+    % TODO \item samplesort Knuth 354 ex. 2: convolution...
 \end{enumerate}
 
-\item
-Snake oil method [Wilf 118, chapter 4.3] -- external method vs. internal manipulations
+\newpage
+
+\ruleline{Snake oil method [Wilf 118, chapter 4.3] -- external method vs. internal manipulations}
 \begin{enumerate}
     \item identify the free variable and give the name to the sum, e.g. $f(n)$
     \item let $F(x) = \sum f(n)x^n$
@@ -365,6 +374,7 @@ Snake oil method [Wilf 118, chapter 4.3] -- external method vs. internal manipul
     \item find coefficients of $F(x)$
 \end{enumerate}
 
+\begin{itemize}
 \item
 Example 0
 \begin{itemize}
@@ -411,8 +421,9 @@ Introducing additional free variable [W4.13]
     \item We evaluate $\sum_k (-1)^k{n\choose k}{n\choose n-m+k}$ by multiplying by $x^m$ etc. % TODO
 \end{itemize}
 
-\item
-Exercises
+\end{itemize}
+
+\ruleline{Exercises}
 \begin{enumerate}
     \item Prove that $\sum_k k{n\choose k} = n2^{n-1}$ via the snake oil method.
             \ans{$L(x) = P(x) = {x\over (1-2x)^2}$}
@@ -430,7 +441,6 @@ Exercises
                     ={x^{p+1}\over 2^p}\cdot {(2x)^p\over (1-2x)^{p+1}}$}
 \end{enumerate}
 
-\end{itemize}
 
 
 \newpage
