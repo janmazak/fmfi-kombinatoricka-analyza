@@ -144,8 +144,10 @@ Compute $\square_n = \sum_{k=1}^n k^2$.
 \end{itemize}
 
 \item
-Homework (use computer for Taylor series expansion and prove it by hand):\\
 Find the sequence with gf $1/(1-x)^3$.
+
+\item
+Find a linear recurrence going back two sequence members that has a solution that contains $n\cdot 3^n$ (possibly plus some linear combination of other exponential or polynomial factors).
 
 \item
 Find explicit formulas for the following sequences [W1.6, R2, R3, R7]:
@@ -156,11 +158,13 @@ Find explicit formulas for the following sequences [W1.6, R2, R3, R7]:
     (b) & $a_{n+1} = \alpha a_n + \beta$ for $n\ge 0$; $a_0=0$ & \ans{$\beta x/(1-x)(1-\alpha x)$;\quad ${\alpha^n-1\over \alpha-1}\beta$}\\
     (c) & $a_{n+1} = a_n/3  +1$ for $n\ge 0$; $a_0=1$ & \ans{${3/2\over 1-x}-{1/2\over 1-x/3}$;\quad ${3^{n+1}-1\over 2\cdot 3^n}$}\\
     (d) & $a_{n+2} = 2a_{n+1}-a_n$ for $n\ge 0$, $a_0=0$, $a_1=1$ & \ans{$x/(1-x)^2$;\quad $n$}\\
-    (e) & $a_{n+2} = 3a_{n+1}-2a_n+3$ for $n>0$; $a_0=1$, $a_1=2$ & \ans{${4\over 1-2x}-{3\over (1-x)^2}$;\quad $2^{n+2}-3n-3$}\\
+    (e) & $a_{n+2} = 3a_{n+1}-2a_n+3$ for $n\ge 0$; $a_0=1$, $a_1=2$ & \ans{${4\over 1-2x}-{3\over (1-x)^2}$;\quad $2^{n+2}-3n-3$}\\
     (f) & $a_n = 2a_{n-1}-a_{n-2}+(-1)^n$ for $n>1$; $a_0=a_1=1$ & \ans{${1/2\over (1-x)^2}-{1/4\over 1-x}+{1/4\over 1+x}$; ${2n+3+(-1)^n\over 4}$}\\
     (g) & $a_n = 2a_{n-1}-n\cdot(-1)^n$ for $n\ge 1$; $a_0=0$ & \ans{${x/9-2/9\over (1+x)^2}+{2/9\over 1-2x}$; ${2^{n+1}-(3n+2)(-1)^n\over 9}$}\\
     (h) & $a_n = 3a_{n-1} + {n\choose 2}$ for $n\ge 1$; $a_0=2$ & \ans{${1\over 8}(19\cdot 3^n-2n(n+2)-3)$}\\
-    (i) & $a_n = 2a_{n-1}-a_{n-2}-2$ for $n\ge 1$; $a_0=a_{10}=0$ & \ans{$n(a_1+1-n)$, so with $a_{10}$, $a_n=n(10-n)$}\\
+    (i) & $a_n = 2a_{n-1}-a_{n-2}-2$ for $n\ge 2$; $a_0=a_{10}=0$ & \ans{$n(a_1+1-n)$, so with $a_{10}$, $a_n=n(10-n)$}\\
+    (j) & $a_n = 4(a_{n-1}-a_{n-2})+(-1)^n$ for $n\ge 2$; $a_0=1$, $a_1=4$ & \ans{${1+x+x^2\over (1+x)(1-2x)^2}$; ${(-1)^n\over 9}-{5\over 18}\cdot 2^n+{7\over 6}(n+1)2^n$}\\
+    (k) & $a_n = -3a_{n-1}+a_{n-2}+3a_{n-3}$ for $n\ge 3$; $a_0=20$, $a_1=-36$, $a_2=60$ \hspace*{-2cm} & \hspace*{2cm} \ans{$5(-3)^n+18(-1)^n-3$}\\
 \end{tabular}
 
 \end{itemize}
