@@ -304,8 +304,7 @@ Given $f(x)\ogf (a_n)_{n\ge 0}$, express ogf for the following sequences in term
 
 
 
-\section{Skipping sequence elements, Snake oil}
-% 3. prednaska
+\section{Skipping sequence elements, Catalan numbers}
 
 
 \ruleline{Discovering combinatorial identities via gfs [Knuth 198, Vandermonde and 5.55]}
@@ -317,28 +316,34 @@ Given $f(x)\ogf (a_n)_{n\ge 0}$, express ogf for the following sequences in term
 
 \ruleline{Every third binomial coefficient [Wilf 51, example 4]}
 \begin{itemize}
-    \item why $(f(x)+f(-x))/2\ogf a_0, 0, a_2, 0, a_4, \dots$ works: ${1\over 2}(1^n + (-1)^n) = [2\mid n]$
-    \item in general, ${1\over r}\sum_{j=0}^{r-1} \omega_r^n = {1\over r}\sum_{j=0}^{r-1} e^{2\pi ijn/r} = [r\mid n]$\\
-        --- just a geometric progression, or a consequence of $t^r-1=(t-1)(t^{n-1}+\dots+t+1)$
+    \item why ${1\over 2}(A(x)+A(-x))\ogf a_0, 0, a_2, 0, a_4, \dots$ works: ${1\over 2}(1^n + (-1)^n) = [2\mid n]$
+    \item in general, for $\omega$ being $r$-th root of unity, ${1\over r}\sum_{j=0}^{r-1} (\omega^j)^n = {1\over r}\sum_{j=0}^{r-1} e^{2\pi ijn/r} = [r\mid n]$\\
+        --- just a geometric progression, or a consequence of $t^r-1=(t-1)(t^{r-1}+\dots+t+1)$
     \item problem: find $S_n = \sum_k (-1)^k{n\choose 3k}$
-    \item if we knew $f(x) = \sum_k {n\choose 3k}x^{3k}$, we would have $\lambda_n = f(-1)$
-    \item for $F(x) = (1+x)^n$, we have $f(x) = {1\over 3}\big(F(x) + F(x\omega^1) + F(x\omega^2)\big)$ for $\omega=e^{2\pi i/3}$
-    \item and so $S_n=f(-1) ={1\over 3}[(1-\omega)^n + (1-\omega^2)^n)] = $ $$ = {1\over 3}\left[\left({3-\sqrt3 i\over 2}\right)^n+\left({3+\sqrt3 i\over 2}\right)^n\right] = 2\cdot 3^{n/2-1}\cos(\pi n/6)$$
+    \item if we knew $f(x) = \sum_k {n\choose 3k}x^{3k}$, we would have $S_n = f(-1)$
+    \item for $A(x) = (1+x)^n$, we have $f(x) = {1\over 3}\big(A(x) + A(x\omega^1) + A(x\omega^2)\big)$ for $\omega=e^{2\pi i/3}$
+    \item and so $S_n=f(-1) ={1\over 3}[(1-\omega)^n + (1-\omega^2)^n)] = $ $$ = {1\over 3}\left[\left({3-\sqrt3 i\over 2}\right)^n+\left({3+\sqrt3 i\over 2}\right)^n\right] = 2\cdot 3^{{n\over 2}-1}\cos\left({\pi n\over 6}\right)$$
 \end{itemize}
 
 \ruleline{Catalan numbers [Knuth 357, example 4]}
 \begin{itemize}
-    \item consider the number of possibilities $c_n$ of how to specify the multiplication order of $A_0A_1\dots A_n$ by parentheses
-    \item split it by the place of last multiplication; $c_n = \sum\limits_{k=0}^{n-1} c_kc_{n-1-k}$ for $n > 0$; $c_0=1$
-    \item three ways for the right-hand side: shift before convolution (thus we have $C(x)\cdot xC(x)$),
-            shift after convolution (thus $x\cdot C(x)^2$), or rewrite through sums and change the order of summation:
-            $$\sum_{n\ge 1}x^n\sum_{k=0}^{n-1}c_kc_{n-1-k}=\sum_{k=0}^\infty x^kc_k\sum_{n\ge k+1} c_{n-1-k}x^{n-k}=\sum_{k=0}^\infty x^kc_k xC(x)=xC(x)\cdot C(x)$$
-    \item consequently, $C(x) - 1 = xC(x)^2$ and thus $C(x) = {1\pm \sqrt{1-4x}\over 2x}$
+    \item consider the number of possibilities $c_n$ of how to specify the multiplication order of $A_0A_1\dots A_n$ by parentheses; let $C(x)=\sum_{n\ge 0} c_nx^n$
+    \item divide possibilities by the place of last multiplication; $c_n = \sum\limits_{k=0}^{n-1} c_kc_{n-1-k}$ for $n > 0$; $c_0=1$
+    \item many ways to deal with the recurrence:
+            \begin{itemize}
+                \item[(1)] shift the recurrence to $c_{n+1} = \sum_{k=0}^n c_kc_{n-k}$ and use Rules 1 and 3; ${C(x)-1\over x} = C(x)^2$
+                \item[(2)] RHS as a convolution of $c_n$ with $c_{n-1}$, i.e. $C(x)\cdot xC(x)$
+                \item[(3)] RHS as a convolution of $c_n$ with $c_n$ shifted by Rule 1, i.e. $x\cdot C(x)^2$
+                \item[(4)] rewriting through sums and changing the order of summation:
+                    $$\sum_{n\ge 1}x^n\sum_{k=0}^{n-1}c_kc_{n-1-k}=\sum_{k=0}^\infty x^kc_k\sum_{n\ge k+1} c_{n-1-k}x^{n-k}=
+                        \sum_{k=0}^\infty x^kc_k xC(x)=xC(x)\cdot C(x)$$
+            \end{itemize}
+    \item consequently, $C(x) - 1 = xC(x)^2$ and thus $C(x) = {1\pm \sqrt{1-4x}\over 2x}=\displaystyle {1\over 2x}\left(1 - \sqrt{1-4x}\right)$
     \item we want $C$ continuous and $C(0) = 1$, so we choose the minus sign (note that the resulting function below
-            is analytical since ${2n\choose n}/(n+1) < 2^{2n}$; it would be analytical also if we choose the plus sign)
+            is analytical since ${2n\choose n}/(n+1) < 2^{2n}$; it would be analytical also if we chose the plus sign)
     \item binomial theorem yields
     \begin{eqnarray*}
-        \sqrt{1-4x} = \sum_{k\ge 0} {1/2\choose k}(-4x)^k &=& 1+\sum_{k\ge 1}{1\over 2k\cdot (-4)^{k-1}}{2k-2\choose k-1}(-4)^kx^k\\
+        \sqrt{1-4x} = (1-4x)^{1/2} = \sum_{k\ge 0} {1/2\choose k}(-4x)^k &=& 1+\sum_{k\ge 1}{1\over 2k\cdot (-4)^{k-1}}{2k-2\choose k-1}(-4)^kx^k\\
         &=& 1 - \sum_{k\ge 1}{2\over k}{2k-2\choose k-1}x^k 
     \end{eqnarray*}
     \item we used ${1/2\choose k}={1/2\over k}{-1/2\choose k-1} = {1\over 2k(-4)^{k-1}}{2k-2\choose k-1}$ because ${-1/2\choose m}={1\over (-4)^m}{2m\choose m}$
@@ -351,17 +356,18 @@ Given $f(x)\ogf (a_n)_{n\ge 0}$, express ogf for the following sequences in term
             \ans{${1\over 3}(A(x^{1/3}) + A(\omega x^{1/3})) + A(\omega^2 x^{1/3})$, where $\omega=e^{2\pi i/3}$}
     \item Compute $S_n=\sum_{n\ge 0} F_{3n}/10^n$ (by plugging a suitable value into the generating function for $F_{3n}$).\\
             \ans{The gf is ${2x\over 1-4x-x^2}$ and $S_n=20/59$.}
-    \item Compute $\sum_k {n\choose 4k}$.
+    \item Compute $\sum_k {n\choose 4k}$. \qquad
             % https://math.stackexchange.com/questions/142260/sum-of-every-kth-binomial-coefficient
             % https://www.wolframalpha.com/input?i=sum+over+k+of+binom%28n%2C+4k%29
-            \ans{$2^{n/2 - 2} (2^{n/2} + \cos(n \pi/4) + (-1)^n \cos(3 n \pi/4)$}
-    \item Compute $\sum_k {6m\choose 3k+1}$.
+            \ans{$2^{{n\over 2} - 2} \left(2^{n\over 2} + \cos\left({1\over 4}n \pi\right) + (-1)^n \cos\left({3\over 4}n \pi\right)\right)$}
+    \item Compute $\sum_k {6m\choose 3k+1}$. \qquad
             % https://math.stackexchange.com/questions/142260/sum-of-every-kth-binomial-coefficient
             % https://www.wolframalpha.com/input?i=sum+over+k+of+binom%28100%2C+3k%2B1%29
-            \ans{Compute the sum for general $n$ and then plug in $n=6m$; $(2^{6m}-1)/3$}
-    \item Evaluate $S_n = \sum_{k=0}^n (-1)^k k^2$.
+            \ans{Compute it for general $n$ and then plug in $n=6m$; $(2^{6m}-1)/3$}
+    \item Evaluate $S_n = \sum_{k=0}^n (-1)^k k^2$. \qquad
             \ans{$f(x) = {-x\over (1+x)^3}$; $S_n={1\over 2}(-1)^n n(n+1)$}
-    \item Find ogf for $H_n = 1 + 1/2 + 1/3 + \dots$. \ans{$-\ln(1-x) / (1-x)$}
+    \item Find ogf for $H_n = 1 + 1/2 + 1/3 + \dots$. \qquad
+            \ans{$-\ln(1-x) / (1-x)$}
     \item Find the number of ways of cutting a convex $n$-gon with labelled vertices into triangles.\\
             % https://math.mit.edu/~goemans/18310S15/generating-function-notes.pdf
             \ans{$C_{n-2}$ (shifted Catalan numbers)}
@@ -370,7 +376,12 @@ Given $f(x)\ogf (a_n)_{n\ge 0}$, express ogf for the following sequences in term
 
 \newpage
 
-\ruleline{Snake oil method [Wilf 118, chapter 4.3] -- external method vs. internal manipulations}
+
+
+\section{Snake Oil}
+
+The Snake Oil method [Wilf 118, chapter 4.3] -- external method vs. internal manipulations within a sum.
+
 \begin{enumerate}
     \item identify the free variable and give the name to the sum, e.g. $f(n)$
     \item let $F(x) = \sum f(n)x^n$
@@ -418,31 +429,37 @@ Example 6 [Wilf 127]
     \item we get the same for the right-hand side
 \end{itemize}
 
-\item 
-Introducing additional free variable [W4.13]
-\begin{itemize}
-    \item Let's prove that $\sum_k (-1)^{n-k}{2n\choose k}^2={2n\choose n}$.
-    \item We evaluate $\sum_k (-1)^k{n\choose k}{n\choose n-m+k}$ by multiplying by $x^m$ etc. % TODO
-\end{itemize}
+%\item 
+%Introducing additional free variable [W4.13]
+%\begin{itemize}
+%    \item Let's prove that $\sum_k (-1)^{n-k}{2n\choose k}^2={2n\choose n}$.
+%    \item We evaluate $\sum_k (-1)^k{n\choose k}{n\choose n-m+k}$ by multiplying by $x^m$ etc. % todo?
+%\end{itemize}
 
 \end{itemize}
+
+\newpage
 
 \ruleline{Exercises}
 \begin{enumerate}
     \item Prove that $\sum_k k{n\choose k} = n2^{n-1}$ via the snake oil method.
             \ans{$L(x) = P(x) = {x\over (1-2x)^2}$}
-    \item Evaluate $\displaystyle f(n)=\sum_{k\ge 0} {k\choose n-k}t^k$. [W4.11(a)] \\[2mm]
-            \ans{$F(x)=1/(1-tx+x^2)$}
-    \item Evaluate $\displaystyle f(n)=\sum_k {n+k\choose 2k}2^{n-k}$, $n\ge 0$. [Wilf 125, Example 4] \\[2mm]
-            \ans{$F(x)={1-2x\over (1-x)(1-4x)}={2\over 3(1-4x)}+{1\over 3(1-x)}$; $f(n)=(2^{2n+1}+1)/3$}
     \item Evaluate $\displaystyle f(n)=\sum_k k^2{n\choose k}3^k$. \\[2mm]
             \ans{$F(x)={3x(1+2x)\over (1-4x)^3}={3/8\over 1-4x}-{3/2\over (1-4x)^2}+{9/8\over (1-4x)^3}$; $f(n)=3\cdot 4^{n-2}\cdot n(1+3n)$}
+    \item Find a closed form for $\displaystyle \sum_{k\ge 0} {k\choose n-k}t^k$. [W4.11(a)] \\[2mm]
+            \ans{$F(x)=1/(1-tx-tx^2)$}
+    \item Evaluate $\displaystyle f(n)=\sum_k {n+k\choose 2k}2^{n-k}$, $n\ge 0$. [Wilf 125, Example 4] \\[2mm]
+            \ans{$F(x)={1-2x\over (1-x)(1-4x)}={2\over 3(1-4x)}+{1\over 3(1-x)}$; $f(n)=(2^{2n+1}+1)/3$}
     \item Evaluate $\displaystyle f(n)=\sum_{k\le n/2} (-1)^k{n-k\choose k}y^{n-2k}$. [Wilf 122, Example 3]\\[2mm]
             \ans{$F(x)=1/(1-xy+x^2)$}
     \item Evaluate $\displaystyle f(n)=\sum_{k} {2n+1\choose 2p+2k+1}{p+k\choose k}$. [W4.11(c)]\\[2mm]
             \ans{replace $2n+1$ by $m$ and solve for $f(m)={m-p-1\choose p}2^{m-2p-1}$;  $f(2n+1)={2n-p\choose p}4^{n-p}$;\\[2mm]
                     $\displaystyle F(x) = {x\over (1-x)^2}\sum_{k\ge 0} {p+k\choose p} \left({x\over 1-x}\right)^{2(p+k)}
                     ={x^{p+1}\over 2^p}\cdot {(2x)^p\over (1-2x)^{p+1}}$}
+    \item Try to prove that $\sum_k {n\choose k}{2n\choose n+k}={3n\choose n}$ via the snake oil method in three different ways: consider the sum
+            $$\sum_k {n\choose k}{m\choose r-k}$$
+            and the free variable being one of $n$, $m$, $r$.
+
 \end{enumerate}
 
 
