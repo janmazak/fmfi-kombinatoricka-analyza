@@ -354,7 +354,8 @@ Given $f(x)\ogf (a_n)_{n\ge 0}$, express ogf for the following sequences in term
 \begin{enumerate}
     \item Assume that $A(x)\ogf (a_n)$. Express the generating function for $\sum_{n\ge 0} a_{3n}x^n$ in terms of $A(x)$.\\
             \ans{${1\over 3}(A(x^{1/3}) + A(\omega x^{1/3})) + A(\omega^2 x^{1/3})$, where $\omega=e^{2\pi i/3}$}
-    \item Compute $S_n=\sum_{n\ge 0} F_{3n}/10^n$ (by plugging a suitable value into the generating function for $F_{3n}$).\\
+    \item Compute $S_n=\sum_{n\ge 0} F_{3n}\cdot 10^{-n}$ (by plugging a suitable value into the generating function for $F_{3n}$).\\
+            % https://youtu.be/BCVPXxNQVIM?t=830
             \ans{The gf is ${2x\over 1-4x-x^2}$ and $S_n=20/59$.}
     \item Compute $\sum_k {n\choose 4k}$. \qquad
             % https://math.stackexchange.com/questions/142260/sum-of-every-kth-binomial-coefficient
