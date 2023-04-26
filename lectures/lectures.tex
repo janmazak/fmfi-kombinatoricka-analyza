@@ -395,14 +395,13 @@ The Snake Oil method [Wilf 118, chapter 4.3] -- external method vs. internal man
 Example 0
 \begin{itemize}
     \item let's evaluate $f(n) = \sum_k {n\choose k}$; after Step 2, $F(x) = \sum_{n\ge 0} x^n \sum_k {n\choose k}$
-    \item $\displaystyle F(x) = \sum_k \sum_n {n\choose k}x^n = \sum_k {x^k\over (1-x)^{k+1}}={1\over 1-x}\cdot {1\over 1-{x\over 1-x}}={1\over 1-2x}$
+    \item $\displaystyle F(x) = \sum_k \sum_n {n\choose k}x^n = \sum_{k\ge 0} {x^k\over (1-x)^{k+1}}={1\over 1-x}\cdot {1\over 1-{x\over 1-x}}={1\over 1-2x}$
 \end{itemize}
 
 \item
 Example 1 [Wilf 121]
 \begin{itemize}
-    \item let's evaluate $f(n) = \sum_{k\ge 0} {k\choose n-k}$
-    \item after Step 2, $F(x) = \sum_n x^n \sum_{k\ge 0} {k\choose n-k}$
+    \item let's evaluate $f(n) = \sum_{k\ge 0} {k\choose n-k}$; after Step 2, $F(x) = \sum_n x^n \sum_{k\ge 0} {k\choose n-k}$
     \item $\displaystyle F(x) = \sum_{k\ge 0} \sum_n {k\choose n-k}x^n = \sum_{k\ge 0}x^k\sum_n {k\choose n-k}x^{n-k} = \sum_{k\ge 0}x^k (1+x)^k = {1\over 1-x-x^2}$
     \item so $f(n) = F_{n+1}$
 \end{itemize}
@@ -468,9 +467,7 @@ Example 6 [Wilf 127]
 \newpage
 
 
-\section{prednaska}
-% 5. prednaska
-
+\section{Asymptotic estimates}
 
 \begin{itemize}
 \item
@@ -480,7 +477,7 @@ Purpose of asymptotics [Knuth 439]
     \item $\displaystyle S_n = \sum_{k=0}^n {3n\choose k}\sim 2{3n\choose n}$; $\displaystyle S_n = {3n\choose n}\left(2-{4\over n} + O\left({1\over n^2}\right)\right)$
     \item how to compare it with $F_{4n}$? we need to approximate the binomial coefficient
     \item purpose is to find \emph{accurate} and \emph{concise} estimates:\\
-            $H_n$ is $\sum_{k\ge 1}^n 1/k$ vs. $O(\log n)$ vs. $\ln n + \gamma + O(n^{-1})$ 
+            $H_n$ is $\sum_{k\ge 1}^n 1/k$\qquad vs.\qquad $O(\log n)$\qquad vs.\qquad $\ln n + \gamma + O(n^{-1})$ 
 \end{itemize}
 
 \item
@@ -564,8 +561,7 @@ Exercises
 \end{itemize}
 
 
-\section{prednaska}
-% 6. prednaska
+\section{Estimates of sums and products}
 
 \newcommand*\dif{\mathop{}\!\mathrm{d}}
 
@@ -601,15 +597,6 @@ Exercises
     \item TODO compare with previous estimate from $k=\ln n$; which is better?
     \item another approach: $P_n = {(2n)!\over n! 2^n n!} = {2n\choose n}/2^n = {2^n\over \sqrt{\pi n}}(1+O(n^{-1}))$
 \end{itemize}
-
-\end{itemize}
-
-\newpage
-
-\section{prednaska}
-% 7. prednaska
-
-\begin{itemize}
 
 \item Estimate $S_n = \sum_{k=1}^n {1\over n^2+k}$ with absolute error (a) $O(n^{-3})$, (b) $O(n^{-7})$. [Knuth 458/Problem 4]
 First approach: ${1\over n^2+k}={1\over n^2(1+k/n^2)}$ etc.; second approach: $S_n = H_{n^2+n}-H_n$. (DU)
